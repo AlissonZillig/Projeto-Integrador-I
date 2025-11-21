@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário de Classe - Professor</title>
+    <link rel="stylesheet" href="style.css"> <style>
+        /* Ajustes específicos para o formulário ficar bonito */
+        .form-container { background: white; padding: 2rem; border-radius: 10px; max-width: 600px; margin: 2rem auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .row { display: flex; gap: 10px; }
+        .col { flex: 1; }
+        h2 { color: #2c3e50; text-align: center; margin-bottom: 1.5rem; }
+        .btn-voltar { display: block; margin-bottom: 1rem; color: #7f8c8d; text-decoration: none; }
+        /* Feedback visual do campo CEP */
+        input:disabled { background-color: #ecf0f1; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <a href="index.html" class="btn-voltar">← Voltar para Login</a>
+        <h2>📝 Cadastro de Aluno e Notas</h2>
+
+        <form id="formAluno">
+            <div class="input-group">
+                <label>Nome do Aluno</label>
+                <input type="text" id="nome" placeholder="Nome completo" required>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="input-group">
+                        <label>CEP (Digite para buscar)</label>
+                        <input type="text" id="cep" placeholder="00000-000" maxlength="9" onblur="buscarCep()">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group">
+                        <label>Cidade</label>
+                        <input type="text" id="cidade" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Endereço (Preenchido Automático)</label>
+                <input type="text" id="endereco" disabled>
+            </div>
+
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+            <div class="row">
+                <div class="col">
+                    <div class="input-group">
+                        <label>Média Atual (0-10)</label>
+                        <input type="number" id="media" step="0.1" min="0" max="10" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group">
+                        <label>% de Faltas</label>
+                        <input type="number" id="faltas" min="0" max="100" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Observação Disciplinar</label>
+                <textarea id="obs" rows="3" style="width:100%; padding:10px; border:1px solid #bdc3c7; border-radius:5px;"></textarea>
+            </div>
+
+            <button type="submit" class="btn-login" style="background-color: #27ae60;">Salvar Dados</button>
+        </form>
+    </div>
+
+    <script src="professor.js"></script>
+</body>
+</html>

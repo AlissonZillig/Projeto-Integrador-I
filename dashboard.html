@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Risco - EWS</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">📊 EWS - Monitoramento</div>
+        <div class="user-info">
+            <span>Olá, Coordenador</span>
+            <a href="index.html" class="btn-logout">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <h2>Painel de Risco Escolar</h2>
+        <p class="subtitle">Alunos ordenados por prioridade de atendimento</p>
+
+        <div id="grid-alunos" class="grid-container">
+            </div>
+    </main>
+
+    <div id="modalIntervencao" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="modalTitulo">Ação Recomendada</h3>
+            <p id="modalTexto">...</p>
+            <button onclick="fecharModal()" class="btn-fechar">Entendido</button>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
