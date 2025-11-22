@@ -55,7 +55,8 @@ document.getElementById('formAluno').addEventListener('submit', function(event) 
         nome: nome,
         media: media,
         faltas: faltas,
-        turma: turma // Agora salva a turma correta!
+        turma: turma, // Agora salva a turma correta!
+        obs: document.getElementById('obs').value
     };
 
     // 3. Lógica de "INSERT INTO" (Salvar no Navegador)

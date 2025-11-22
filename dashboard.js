@@ -82,7 +82,7 @@ function carregarDashboard() {
             <p>Média: <strong>${aluno.media}</strong> | Faltas: <strong>${aluno.faltas}%</strong></p>
             <span class="tag-risco">${risco.nivel} Risco</span>
         `;
-        card.onclick = () => abrirModal(aluno.nome, risco.acao);
+card.onclick = () => abrirModal(aluno.nome, risco.acao, aluno.obs);
         container.appendChild(card);
     });
 
@@ -90,12 +90,27 @@ function carregarDashboard() {
 
 }
 
+
 // Funções do Modal (Mantidas)
-function abrirModal(nome, acao) {
+function abrirModal(nome, acao, observacao) {
     document.getElementById('modalTitulo').innerText = `Aluno: ${nome}`;
-    document.getElementById('modalTexto').innerText = acao;
+    
+    // Mantém exatamente seu comportamento
+    let texto = acao;
+
+    document.getElementById('modalTexto').innerText = texto;
+
+    // Observação no campo correto
+    if (observacao && observacao !== "") {
+        document.getElementById('modalObsTexto').innerText = observacao;
+    } else {
+        document.getElementById('modalObsTexto').innerText = "Nenhuma observação disciplinar registrada.";
+    }
+
     document.getElementById('modalIntervencao').classList.remove('hidden');
 }
+
+
 
 function fecharModal() {
     document.getElementById('modalIntervencao').classList.add('hidden');
