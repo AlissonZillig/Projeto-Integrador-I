@@ -82,21 +82,26 @@ function carregarDashboard() {
             <p>Média: <strong>${aluno.media}</strong> | Faltas: <strong>${aluno.faltas}%</strong></p>
             <span class="tag-risco">${risco.nivel} Risco</span>
         `;
-        card.onclick = () => abrirModal(aluno.nome, risco.acao);
+        card.onclick = () => abrirModal(aluno.nome, risco.acao, aluno.observacao);
         container.appendChild(card);
     });
-
-    atualizarGrafico(alunosOrdenados);
-
 }
 
 // Funções do Modal (Mantidas)
-function abrirModal(nome, acao) {
+function abrirModal(nome, acao, observacao) {
     document.getElementById('modalTitulo').innerText = `Aluno: ${nome}`;
-    document.getElementById('modalTexto').innerText = acao;
+    
+    let texto = acao;
+
+    if (observacao && observacao !== "") {
+        texto += `\n\n📝 Observação do Professor:\n"${observacao}"`;
+    }
+    document.getElementById('modalTexto').innerText = texto;
+    
     document.getElementById('modalIntervencao').classList.remove('hidden');
 }
 
+    
 function fecharModal() {
     document.getElementById('modalIntervencao').classList.add('hidden');
 }
@@ -106,47 +111,3 @@ window.onload = function() {
     carregarFiltroTurmas(); // 1º Preenche o select
     carregarDashboard();    // 2º Carrega os cards
 };
-
-
-// Grafico:
-let graficoRisco = null;
-
-function atualizarGrafico(listaFiltrada) {
-    let total = listaFiltrada.length;
-    let emRisco = 0;
-
-    listaFiltrada.forEach(a => {
-        const r = calcularRisco(a);
-        if (r.nivel === "Alto" || r.nivel === "Médio") {
-            emRisco++;
-        }
-    });
-
-    const ctx = document.getElementById('graficoRisco').getContext('2d');
-
-    if (graficoRisco) graficoRisco.destroy();
-
-    graficoRisco = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Em risco (alto/médio)', 'Fora de risco (baixo)'],
-            datasets: [{
-                data: [emRisco, total - emRisco],
-                backgroundColor: [
-                    '#e74c3c', // alto/médio risco
-                    '#2ecc71'  // baixo risco
-                ],
-                borderColor: ['#fff', '#fff'],
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { position: 'bottom' }
-            }
-        }
-    });
-}
-
-
