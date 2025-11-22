@@ -48,17 +48,14 @@ document.getElementById('formAluno').addEventListener('submit', function(event) 
     // Captura o que o professor digitou no campo "Turma" e converte para Maiúsculas (ex: 1b -> 1B)
     const turma = document.getElementById('turma').value.toUpperCase(); 
     // ----------------------
-    
-    const observacao = document.getElementById('obs').value.trim();
-    
+
     // 2. Cria o objeto do novo aluno (Pacote de dados)
     const novoAluno = {
         id: Date.now(), // Gera um ID único baseado no tempo exato
         nome: nome,
         media: media,
         faltas: faltas,
-        turma: turma, // Agora salva a turma correta!
-        observacao: observacao
+        turma: turma // Agora salva a turma correta!
     };
 
     // 3. Lógica de "INSERT INTO" (Salvar no Navegador)
