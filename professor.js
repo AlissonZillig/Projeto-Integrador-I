@@ -41,17 +41,21 @@ document.getElementById('formAluno').addEventListener('submit', function(event) 
 
     // 1. Captura os dados digitados no formulário
     const nome = document.getElementById('nome').value;
-    const media = parseFloat(document.getElementById('media').value); // Converte texto para número decimal
-    const faltas = parseInt(document.getElementById('faltas').value); // Converte texto para número inteiro
-    const turma = "1º Semestre"; // Definimos um padrão já que não tem campo no form
+    const media = parseFloat(document.getElementById('media').value); 
+    const faltas = parseInt(document.getElementById('faltas').value);
+    
+    // --- ALTERAÇÃO AQUI ---
+    // Captura o que o professor digitou no campo "Turma" e converte para Maiúsculas (ex: 1b -> 1B)
+    const turma = document.getElementById('turma').value.toUpperCase(); 
+    // ----------------------
 
     // 2. Cria o objeto do novo aluno (Pacote de dados)
     const novoAluno = {
-        id: Date.now(), // Gera um ID único baseado no tempo exato (milissegundos)
+        id: Date.now(), // Gera um ID único baseado no tempo exato
         nome: nome,
         media: media,
         faltas: faltas,
-        turma: turma
+        turma: turma // Agora salva a turma correta!
     };
 
     // 3. Lógica de "INSERT INTO" (Salvar no Navegador)
@@ -66,7 +70,7 @@ document.getElementById('formAluno').addEventListener('submit', function(event) 
     localStorage.setItem('ews_alunos', JSON.stringify(listaAlunos));
 
     // 4. Feedback e Limpeza
-    alert(`✅ Aluno ${nome} salvo com sucesso!\n\nO sistema recalculou o risco no Dashboard.`);
+    alert(`✅ Aluno ${nome} salvo na turma ${turma} com sucesso!\n\nO sistema recalculou o risco no Dashboard.`);
     
     // Limpa os campos para o próximo cadastro
     document.getElementById('formAluno').reset();

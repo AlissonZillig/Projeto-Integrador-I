@@ -4,25 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard de Risco - EWS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo">📊 EWS - Monitoramento</div>
-        <div class="user-info">
-            <span>Olá, Coordenador</span>
-            <a href="index.html" class="btn-logout">Sair</a>
+    <div class="main-content">
+        <div class="dashboard-card">
+            
+            <header class="dash-header">
+                
+                
+                <div class="header-top">
+                    <a href="index.html" class="btn-logout">← Voltar para o Login</a> 
+                    <img src="images/logo.png" alt="Logo Evasao" class="dash-logo">
+                    <div class="logo-text">Evasão Zero</div>
+                    
+                </div>
+                <hr>
+
+                <div class="header-intro">
+        
+        <p>Olá, Coordenador. Abaixo estão os alunos ordenados por prioridade.</p>
+    </div>
+
+    <div class="filter-container">
+        <label for="filtroTurma">Filtrar por Sala:</label>
+        <select id="filtroTurma" onchange="carregarDashboard()">
+            <option value="todas">Todas as Turmas</option>
+            </select>
+    </div>
+
+</header>
+                
+            </header>
+            
+
+            <main>
+                <div id="grid-alunos" class="grid-container">
+                    </div>
+            </main>
+
         </div>
-    </header>
-
-    <main>
-        <h2>Painel de Risco Escolar</h2>
-        <p class="subtitle">Alunos ordenados por prioridade de atendimento</p>
-
-        <div id="grid-alunos" class="grid-container">
-            </div>
-    </main>
+    </div>
 
     <div id="modalIntervencao" class="modal hidden">
         <div class="modal-content">
@@ -31,6 +56,10 @@
             <button onclick="fecharModal()" class="btn-fechar">Entendido</button>
         </div>
     </div>
+    <footer>
+        <p>© 2025 Evasão Zero - Projeto integrador I</p>
+        <p>Fatec Cotia</p>
+    </footer>
 
     <script src="dashboard.js"></script>
 </body>

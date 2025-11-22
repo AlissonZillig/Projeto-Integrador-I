@@ -1,26 +1,58 @@
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS E FONTE
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* A MÁGICA DO RODAPÉ: 
+   Usamos Flexbox para garantir que o rodapé fique sempre no chão,
+   mas empurrado para baixo se o conteúdo crescer.
+*/
 body {
-    background-color: #f0f2f5; /* Cor neutra de fundo */
+    min-height: 100vh; /* Altura mínima é 100% da tela */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Ocupa a altura total da tela */
+    flex-direction: column;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Azul Profissional */
+    overflow-x: hidden;
 }
 
+/* =========================================
+   2. ESTRUTURA DO LAYOUT
+   ========================================= */
+
+/* Wrapper que empurra o rodapé para baixo (flex: 1) */
+.main-content {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center;     /* Centraliza horizontalmente */
+    width: 100%;
+    padding: 40px 20px;      /* Espaço para não colar nas bordas */
+}
+
+/* =========================================
+   3. ESTILO DO CARTÃO DE LOGIN
+   ========================================= */
 .login-container {
     background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* Sombra suave e difusa */
     width: 100%;
-    max-width: 400px; /* Largura máxima para desktop */
-    margin: 20px; /* Margem para não colar na borda do celular */
+    max-width: 380px;
+    transition: transform 0.3s ease;
+    margin-bottom: 2rem; /* Espaço entre o login e o texto "Sobre" */
+}
+
+.login-container:hover {
+    transform: translateY(-5px); /* Efeito leve de flutuação */
 }
 
 .login-header {
@@ -29,56 +61,181 @@ body {
 }
 
 .login-header h2 {
-    color: #2c3e50;
+    color: #1e3c72;
+    font-weight: 600;
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
 }
 
 .login-header p {
     color: #7f8c8d;
     font-size: 0.9rem;
+    font-weight: 300;
+}
+.login-logo {
+    width: 120px;        /* Define um tamanho ideal */
+    height: auto;        /* Mantém a proporção correta */
+    margin-bottom: 15px; /* Dá um espaço para o título "Evasão Zero" */
+    display: block;      /* Garante que aceite margens */
+    margin-left: auto;   /* Centraliza na horizontal */
+    margin-right: auto;  /* Centraliza na horizontal */
 }
 
+/* =========================================
+   4. FORMULÁRIO E INPUTS
+   ========================================= */
 .input-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
 .input-group label {
     display: block;
-    margin-bottom: 0.5rem;
-    color: #34495e;
-    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #444;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
 .input-group input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 12px 15px;
+    border: 2px solid #f0f2f5;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s;
+    background-color: #fafafa;
 }
 
+.input-group input:focus {
+    border-color: #2a5298;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(42, 82, 152, 0.1); /* Brilho azul ao clicar */
+}
+
+/* Botão com Gradiente */
 .btn-login {
     width: 100%;
-    padding: 12px;
-    background-color: #3498db; /* Azul Institucional */
+    padding: 14px;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
 }
 
 .btn-login:hover {
-    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 60, 114, 0.3);
 }
 
+.btn-login:active {
+    transform: translateY(0);
+}
+
+/* Dica amarela */
 .hint {
-    margin-top: 15px;
+    margin-top: 20px;
     text-align: center;
     font-size: 0.8rem;
-    color: #e74c3c;
-    background: #fadbd8;
-    padding: 5px;
+    color: #856404;
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 10px;
     border-radius: 4px;
+}
+
+.hint strong {
+    color: #d35400;
+}
+
+/* =========================================
+   5. SEÇÃO "SOBRE O SISTEMA"
+   ========================================= */
+.about-app {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    line-height: 1.6;
+    animation: fadeIn 1s ease-in;
+}
+
+.about-app h3 {
+    color: #fff; /* Branco puro */
+    font-weight: 700; /* Mais negrito no título */
+    opacity: 1; /* Tira a transparência */
+    margin-bottom: 15px;
+}
+
+.about-app p {
+    color: rgba(255, 255, 255, 0.9); /* Mais legível */
+    font-weight: 400; /* Fonte normal, não a 'light' */
+    font-size: 0.95rem; /* Um pouco maior */
+    max-width: 600px; /* Limita a largura para não ficar uma linha comprida */
+    margin: 0 auto; /* Centraliza */
+}
+
+/* =========================================
+   6. FOOTER (RODAPÉ)
+   ========================================= */
+footer {
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5); /* Texto discreto */
+    font-size: 0.75rem;
+    padding: 15px;
+    background-color: rgba(0,0,0,0.1); /* Fundo sutil para separar */
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Animação de entrada suave */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   7. RESPONSIVIDADE (Celulares)
+   ========================================= */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1.5rem;
+    }
+    
+    .about-app {
+        padding: 0 10px;
+    }
+}
+/* Botão Secundário (Alterar Senha) */
+.btn-secondary {
+    background: transparent; /* Fundo transparente */
+    border: 1px solid #cbd5e0; /* Borda bem fininha */
+    color: #718096; /* Texto cinza */
+    margin-top: 15px; /* Mais espaço entre os botões */
+    font-size: 0.85rem; /* Texto um pouquinho menor */
+    display: block;       /* Transforma o botão em bloco para aceitar margem lateral */
+    margin: 15px auto 0;  /* 15px em cima, AUTO nas laterais (centraliza), 0 embaixo */
+    width: fit-content;
+}
+
+.btn-secondary:hover {
+    background: #f7fafc;
+    border-color: #a0aec0;
+    color: #2d3748;
+    transform: none; /* Tira o efeito de subir para não competir com o principal */
+    cursor: pointer;
 }

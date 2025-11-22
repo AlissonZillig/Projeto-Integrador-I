@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diário de Classe - Professor</title>
-    <link rel="stylesheet" href="style.css"> <style>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
         /* Ajustes específicos para o formulário ficar bonito */
         .form-container { background: white; padding: 2rem; border-radius: 10px; max-width: 600px; margin: 2rem auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .row { display: flex; gap: 10px; }
@@ -18,13 +19,19 @@
 <body>
 
     <div class="form-container">
-        <a href="index.html" class="btn-voltar">← Voltar para Login</a>
-        <h2>📝 Cadastro de Aluno e Notas</h2>
+        <a href="index.html" class="btn-voltar">← Voltar para o Login</a>
+        <img src="images/logo.png" alt="Logo Evasão Zero" class="login-logo">
+        <h2>Cadastro de Aluno e Notas</h2>
 
         <form id="formAluno">
             <div class="input-group">
-                <label>Nome do Aluno</label>
+                <label for="nome">Nome do Aluno</label>
                 <input type="text" id="nome" placeholder="Nome completo" required>
+            </div>
+
+            <div class="input-group">
+                <label for="turma">Turma / Sala</label>
+                <input type="text" id="turma" placeholder="Ex: 3º B" required>
             </div>
 
             <div class="row">
@@ -72,6 +79,10 @@
             <button type="submit" class="btn-login" style="background-color: #27ae60;">Salvar Dados</button>
         </form>
     </div>
+    <footer>
+        <p>© 2025 Evasão Zero - Projeto integrador I</p>
+        <p>Fatec Cotia</p>
+    </footer>
 
     <script src="professor.js"></script>
 </body>

@@ -4,32 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sistema de Prevenção Escolar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="login-container">
-        <div class="login-header">
-            <h2>Early Warning System 🎓</h2>
-            <p>Acesse para gerenciar o risco escolar</p>
+    <div class="main-content">
+        
+        <div class="login-container">
+            <div class="login-header">
+                <img src="images/logo.png" alt="Logo Evasão Zero" class="login-logo">
+                <h2>Evasão Zero</h2>
+                <p>Conectando futuros, diminuindo a evasão</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">E-mail ou Usuário</label>
+                    <input type="text" id="email" placeholder="Ex: prof ou coord" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="Digite sua senha" required>
+                </div>
+
+                <button type="submit" class="btn-login">Entrar no Sistema</button>
+
+                <button type="button" id="btnMudarSenha" class="btn-secondary">Alterar Senha</button>
+                
+                
+            </form>
         </div>
 
-        <form id="loginForm">
-            <div class="input-group">
-                <label for="email">E-mail ou Usuário</label>
-                <input type="text" id="email" placeholder="Ex: prof ou coord" required>
-            </div>
+        <div class="about-app">
+            <h3>Sobre o Sistema</h3>
+            <p>O <strong>Evasão Zero</strong> utiliza análise de dados para identificar alunos em risco escolar, permitindo intervenção pedagógica rápida e eficaz.</p>
+        </div>
 
-            <div class="input-group">
-                <label for="password">Senha</label>
-                <input type="password" id="password" placeholder="Digite sua senha" required>
-            </div>
-
-            <button type="submit" class="btn-login">Entrar no Sistema</button>
-            
-            <p class="hint">Dica para banca: use <strong>prof</strong> ou <strong>coord</strong></p>
-        </form>
     </div>
+
+    <footer>
+        <p>© 2025 Evasão Zero - Projeto integrador I</p>
+        <p>Fatec Cotia</p>
+    </footer>
 
     <script src="login.js"></script>
 </body>
