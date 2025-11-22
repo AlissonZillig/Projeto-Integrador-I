@@ -85,6 +85,9 @@ function carregarDashboard() {
         card.onclick = () => abrirModal(aluno.nome, risco.acao);
         container.appendChild(card);
     });
+
+    atualizarGrafico(alunosOrdenados);
+
 }
 
 // Funções do Modal (Mantidas)
@@ -103,3 +106,47 @@ window.onload = function() {
     carregarFiltroTurmas(); // 1º Preenche o select
     carregarDashboard();    // 2º Carrega os cards
 };
+
+
+// Grafico:
+let graficoRisco = null;
+
+function atualizarGrafico(listaFiltrada) {
+    let total = listaFiltrada.length;
+    let emRisco = 0;
+
+    listaFiltrada.forEach(a => {
+        const r = calcularRisco(a);
+        if (r.nivel === "Alto" || r.nivel === "Médio") {
+            emRisco++;
+        }
+    });
+
+    const ctx = document.getElementById('graficoRisco').getContext('2d');
+
+    if (graficoRisco) graficoRisco.destroy();
+
+    graficoRisco = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Em risco (alto/médio)', 'Fora de risco (baixo)'],
+            datasets: [{
+                data: [emRisco, total - emRisco],
+                backgroundColor: [
+                    '#e74c3c', // alto/médio risco
+                    '#2ecc71'  // baixo risco
+                ],
+                borderColor: ['#fff', '#fff'],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+}
+
+
