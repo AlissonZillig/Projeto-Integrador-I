@@ -1,4 +1,4 @@
-// 1. Dados Iniciais (Mantido)
+// Dados Iniciais ficticios
 const dadosFicticios = [
     { id: 1, nome: "Carlos Henrique", media: 3.5, faltas: 25, turma: "1º A" },
     { id: 2, nome: "Ana Clara", media: 8.0, faltas: 5, turma: "1º B" },
@@ -17,7 +17,7 @@ function obterAlunos() {
     }
 }
 
-// 2. Função de Risco (Mantida)
+// Função de Risco 
 function calcularRisco(aluno) {
     if (aluno.faltas > 20 || aluno.media < 5.0) {
         return { nivel: 'Alto', classe: 'status-alto', acao: '🚨 Agendar reunião com os pais urgente.' };
@@ -28,15 +28,15 @@ function calcularRisco(aluno) {
     }
 }
 
-// --- NOVO: Função para carregar as opções do Filtro ---
+// Função carregar as opções do Filtro 
 function carregarFiltroTurmas() {
     const alunos = obterAlunos();
     const select = document.getElementById('filtroTurma');
     
-    // Cria um conjunto (Set) para pegar apenas turmas únicas (sem repetir)
+    // Cria um conjunto (Set) para pegar apenas turmas únicas 
     const turmasUnicas = [...new Set(alunos.map(aluno => aluno.turma))].sort();
 
-    // Limpa opções antigas (mantendo apenas "Todas")
+    // Limpa opções antigas 
     select.innerHTML = '<option value="todas">Todas as Turmas</option>';
 
     turmasUnicas.forEach(turma => {
@@ -49,21 +49,20 @@ function carregarFiltroTurmas() {
     });
 }
 
-// 3. Renderizar na Tela (ATUALIZADA COM FILTRO)
+//Renderizar na Tela 
 function carregarDashboard() {
     const container = document.getElementById('grid-alunos');
     container.innerHTML = ''; 
 
     let alunos = obterAlunos(); 
 
-    // --- LÓGICA DE FILTRO AQUI ---
+    //LÓGICA DE FILTRO 
     const filtro = document.getElementById('filtroTurma').value;
     
     if (filtro !== 'todas') {
         // Se não for "todas", filtra apenas os alunos daquela turma
         alunos = alunos.filter(aluno => aluno.turma === filtro);
     }
-    // ------------------------------
 
     const alunosOrdenados = alunos.sort((a, b) => b.faltas - a.faltas);
 
@@ -91,16 +90,11 @@ card.onclick = () => abrirModal(aluno.nome, risco.acao, aluno.obs);
 }
 
 
-// Funções do Modal (Mantidas)
+// Funções do Modal 
 function abrirModal(nome, acao, observacao) {
     document.getElementById('modalTitulo').innerText = `Aluno: ${nome}`;
-    
-    // Mantém exatamente seu comportamento
     let texto = acao;
-
     document.getElementById('modalTexto').innerText = texto;
-
-    // Observação no campo correto
     if (observacao && observacao !== "") {
         document.getElementById('modalObsTexto').innerText = observacao;
     } else {
@@ -110,18 +104,13 @@ function abrirModal(nome, acao, observacao) {
     document.getElementById('modalIntervencao').classList.remove('hidden');
 }
 
-
-
 function fecharModal() {
     document.getElementById('modalIntervencao').classList.add('hidden');
 }
-
-// Ao carregar a página:
 window.onload = function() {
-    carregarFiltroTurmas(); // 1º Preenche o select
-    carregarDashboard();    // 2º Carrega os cards
+    carregarFiltroTurmas(); // Preenche o select
+    carregarDashboard();    // Carrega os cards
 };
-
 
 // Grafico:
 let graficoRisco = null;
@@ -140,7 +129,7 @@ function atualizarGrafico(listaFiltrada) {
     const ctx = document.getElementById('graficoRisco').getContext('2d');
 
     if (graficoRisco) graficoRisco.destroy();
-
+// Grafico de pizza
     graficoRisco = new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -148,8 +137,8 @@ function atualizarGrafico(listaFiltrada) {
             datasets: [{
                 data: [emRisco, total - emRisco],
                 backgroundColor: [
-                    '#e74c3c', // alto/médio risco
-                    '#2ecc71'  // baixo risco
+                    '#e74c3c', 
+                    '#2ecc71'  
                 ],
                 borderColor: ['#fff', '#fff'],
                 borderWidth: 2

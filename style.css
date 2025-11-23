@@ -1,6 +1,3 @@
-/* =========================================
-   1. CONFIGURAÇÕES GERAIS E FONTE
-   ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 * {
@@ -9,50 +6,46 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-
-/* A MÁGICA DO RODAPÉ: 
-   Usamos Flexbox para garantir que o rodapé fique sempre no chão,
-   mas empurrado para baixo se o conteúdo crescer.
+/* 
+Flexbox para garantir que o rodapé fique sempre no chão
 */
 body {
-    min-height: 100vh; /* Altura mínima é 100% da tela */
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Azul Profissional */
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); 
     overflow-x: hidden;
 }
 
-/* =========================================
-   2. ESTRUTURA DO LAYOUT
-   ========================================= */
-
-/* Wrapper que empurra o rodapé para baixo (flex: 1) */
+/* 
+   ESTRUTURA DO LAYOUT
+ */
 .main-content {
     flex: 1; 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center;     /* Centraliza horizontalmente */
+    justify-content: center; 
+    align-items: center;    
     width: 100%;
-    padding: 40px 20px;      /* Espaço para não colar nas bordas */
+    padding: 40px 20px;      
 }
 
-/* =========================================
-   3. ESTILO DO CARTÃO DE LOGIN
-   ========================================= */
+/* 
+   ESTILO FORMULÁRIO  LOGIN
+ */
 .login-container {
     background-color: white;
     padding: 2.5rem;
     border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* Sombra suave e difusa */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
     width: 100%;
     max-width: 380px;
     transition: transform 0.3s ease;
-    margin-bottom: 2rem; /* Espaço entre o login e o texto "Sobre" */
+    margin-bottom: 2rem; 
 }
 
 .login-container:hover {
-    transform: translateY(-5px); /* Efeito leve de flutuação */
+    transform: translateY(-5px); /* Efeito de flutuação */
 }
 
 .login-header {
@@ -73,17 +66,25 @@ body {
     font-weight: 300;
 }
 .login-logo {
-    width: 120px;        /* Define um tamanho ideal */
-    height: auto;        /* Mantém a proporção correta */
-    margin-bottom: 15px; /* Dá um espaço para o título "Evasão Zero" */
+    width: 120px;        
+    height: auto;        
+    margin-bottom: 15px; 
     display: block;      /* Garante que aceite margens */
-    margin-left: auto;   /* Centraliza na horizontal */
-    margin-right: auto;  /* Centraliza na horizontal */
+    margin-left: auto;   
+    margin-right: auto;  
 }
 
-/* =========================================
-   4. FORMULÁRIO E INPUTS
-   ========================================= */
+/* 
+   FORMULÁRIO E INPUTS
+*/
+.form-container { background: white; padding: 2rem; border-radius: 10px; max-width: 600px; margin: 2rem auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.row { display: flex; gap: 10px; }
+.col { flex: 1; }
+h2 { color: #2c3e50; text-align: center; margin-bottom: 1.5rem; }
+.btn-voltar { display: block; margin-bottom: 1rem; color: #7f8c8d; text-decoration: none; }
+        /* Feedback visual do campo CEP */
+input:disabled { background-color: #ecf0f1; cursor: not-allowed; }
+
 .input-group {
     margin-bottom: 1.2rem;
 }
@@ -110,11 +111,11 @@ body {
 .input-group input:focus {
     border-color: #2a5298;
     background-color: #fff;
-    box-shadow: 0 0 0 4px rgba(42, 82, 152, 0.1); /* Brilho azul ao clicar */
+    box-shadow: 0 0 0 4px rgba(42, 82, 152, 0.1); 
 }
 
-/* Botão com Gradiente */
-.btn-login {
+
+.btn-login { /* Botão com Gradiente */
     width: 100%;
     padding: 14px;
     background: linear-gradient(to right, #1e3c72, #2a5298);
@@ -137,7 +138,7 @@ body {
     transform: translateY(0);
 }
 
-/* Dica amarela */
+
 .hint {
     margin-top: 20px;
     text-align: center;
@@ -153,9 +154,9 @@ body {
     color: #d35400;
 }
 
-/* =========================================
-   5. SEÇÃO "SOBRE O SISTEMA"
-   ========================================= */
+/*
+   SEÇÃO  SISTEMA
+*/
 .about-app {
     text-align: center;
     color: rgba(255, 255, 255, 0.9);
@@ -165,30 +166,30 @@ body {
 }
 
 .about-app h3 {
-    color: #fff; /* Branco puro */
-    font-weight: 700; /* Mais negrito no título */
-    opacity: 1; /* Tira a transparência */
+    color: #fff; 
+    font-weight: 700; 
+    opacity: 1; 
     margin-bottom: 15px;
 }
 
 .about-app p {
-    color: rgba(255, 255, 255, 0.9); /* Mais legível */
-    font-weight: 400; /* Fonte normal, não a 'light' */
-    font-size: 0.95rem; /* Um pouco maior */
-    max-width: 600px; /* Limita a largura para não ficar uma linha comprida */
-    margin: 0 auto; /* Centraliza */
+    color: rgba(255, 255, 255, 0.9); 
+    font-weight: 400; 
+    font-size: 0.95rem; 
+    max-width: 600px; 
+    margin: 0 auto; 
 }
 
-/* =========================================
-   6. FOOTER (RODAPÉ)
-   ========================================= */
+/* 
+   RODAPÉ
+*/
 footer {
     width: 100%;
     text-align: center;
-    color: rgba(255, 255, 255, 0.5); /* Texto discreto */
+    color: rgba(255, 255, 255, 0.5); 
     font-size: 0.75rem;
     padding: 15px;
-    background-color: rgba(0,0,0,0.1); /* Fundo sutil para separar */
+    background-color: rgba(0,0,0,0.1); 
 }
 
 footer a {
@@ -202,15 +203,15 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Animação de entrada suave */
-@keyframes fadeIn {
+
+@keyframes fadeIn { /* Animação de entrada suave */
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* =========================================
-   7. RESPONSIVIDADE (Celulares)
-   ========================================= */
+/* 
+   RESPONSIVIDADE 
+*/
 @media (max-width: 480px) {
     .login-container {
         padding: 1.5rem;
@@ -220,15 +221,15 @@ footer a:hover {
         padding: 0 10px;
     }
 }
-/* Botão Secundário (Alterar Senha) */
-.btn-secondary {
-    background: transparent; /* Fundo transparente */
-    border: 1px solid #cbd5e0; /* Borda bem fininha */
-    color: #718096; /* Texto cinza */
-    margin-top: 15px; /* Mais espaço entre os botões */
-    font-size: 0.85rem; /* Texto um pouquinho menor */
-    display: block;       /* Transforma o botão em bloco para aceitar margem lateral */
-    margin: 15px auto 0;  /* 15px em cima, AUTO nas laterais (centraliza), 0 embaixo */
+
+.btn-secondary { /* Botão Secundário (Alterar Senha) */
+    background: transparent; 
+    border: 1px solid #cbd5e0; 
+    color: #718096; 
+    margin-top: 15px; 
+    font-size: 0.85rem; 
+    display: block;       /* Transforma o botão em bloco pr aceitar margem lateral */
+    margin: 15px auto 0; 
     width: fit-content;
 }
 
@@ -236,6 +237,6 @@ footer a:hover {
     background: #f7fafc;
     border-color: #a0aec0;
     color: #2d3748;
-    transform: none; /* Tira o efeito de subir para não competir com o principal */
+    transform: none; /* Tira o efeito de subir pra não atrapalhar oprincipal */
     cursor: pointer;
 }

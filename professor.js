@@ -1,7 +1,4 @@
-// ================================================================
-// PARTE 1: INTEGRAÇÃO COM API EXTERNA (VIACEP)
-// Requisito Obrigatório: Uso de API
-// ================================================================
+//  API EXTERNA VIACEP
 function buscarCep() {
     const cep = document.getElementById('cep').value.replace(/\D/g, ''); // Remove traços e pontos
 
@@ -32,45 +29,41 @@ function buscarCep() {
     }
 }
 
-// ================================================================
-// PARTE 2: SALVAR NO BANCO DE DADOS LOCAL (LOCALSTORAGE)
-// Requisito: Persistência de Dados para o Dashboard
-// ================================================================
+//Armazenamento local dos dados do dashboard
 document.getElementById('formAluno').addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede a página de recarregar sozinha
+    event.preventDefault(); // Impede a pagina recarregar sozinha
 
-    // 1. Captura os dados digitados no formulário
+    // Captura dados no formulário
     const nome = document.getElementById('nome').value;
     const media = parseFloat(document.getElementById('media').value); 
     const faltas = parseInt(document.getElementById('faltas').value);
     
-    // --- ALTERAÇÃO AQUI ---
-    // Captura o que o professor digitou no campo "Turma" e converte para Maiúsculas (ex: 1b -> 1B)
+    // Captura a observação e deixa maiusculo
     const turma = document.getElementById('turma').value.toUpperCase(); 
     // ----------------------
 
-    // 2. Cria o objeto do novo aluno (Pacote de dados)
+    // Cria o objeto do novo aluno 
     const novoAluno = {
         id: Date.now(), // Gera um ID único baseado no tempo exato
         nome: nome,
         media: media,
         faltas: faltas,
-        turma: turma, // Agora salva a turma correta!
+        turma: turma, 
         obs: document.getElementById('obs').value
     };
 
-    // 3. Lógica de "INSERT INTO" (Salvar no Navegador)
+    // Lógica de "INSERT INTO" (Salvar no Navegador)
     
-    // Passo A: Baixa a lista atual de alunos (ou cria uma vazia se não tiver nada)
+    // Baixa a lista atual de alunos ( cria uma vazia se não tiver nada)
     let listaAlunos = JSON.parse(localStorage.getItem('ews_alunos')) || [];
     
-    // Passo B: Adiciona o novo aluno na lista
+    //add o novo aluno na lista
     listaAlunos.push(novoAluno);
 
-    // Passo C: Salva a lista atualizada de volta no "banco" do navegador
+    //Salva a lista atualizada de volta no "banco" do navegador
     localStorage.setItem('ews_alunos', JSON.stringify(listaAlunos));
 
-    // 4. Feedback e Limpeza
+    //Feedback 
     alert(`✅ Aluno ${nome} salvo na turma ${turma} com sucesso!\n\nO sistema recalculou o risco no Dashboard.`);
     
     // Limpa os campos para o próximo cadastro

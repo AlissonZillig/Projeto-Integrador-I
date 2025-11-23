@@ -1,6 +1,6 @@
-/* =========================================
-   ESTILO DO DASHBOARD (Integrado ao Tema Azul)
-   ========================================= */
+/* 
+   DASHBOARD 
+*/
 
 .dashboard-card {
     background: white;
@@ -13,22 +13,20 @@
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* =========================================
-   CABEÇALHO (Hierarquia: Botão no Topo > Logo Centralizada)
-   ========================================= */
+/* 
+   CABEÇALHO 
+*/
 .dash-header {
     margin-bottom: 2rem;
 }
 
 .header-top {
-    position: relative;         /* Referência para o botão absoluto */
+    position: relative;        
     display: flex;
-    justify-content: center;    /* Centraliza Logo e Texto horizontalmente */
-    align-items: center;        /* Centraliza verticalmente */
+    justify-content: center;    
+    align-items: center;        
     margin-bottom: 1rem;
     min-height: 60px;
-    
-    /* CRUCIAL: Empurra a logo um pouco para baixo para não brigar com o botão */
     padding-top: 20px; 
 }
 
@@ -45,23 +43,21 @@
     font-size: 1.4rem;
 }
 
-/* Botão Sair (NO TOPO E NA FRENTE DE TUDO) */
+/* Botão Sair  */
 .btn-logout { 
-    position: absolute;         /* Sai do fluxo normal */
+    position: absolute;         
+    top: 0;                     
+    left: 0;                    
+    z-index: 10; /* Garante que fique "na frente" (camada superior) */
     
-    /* --- POSICIONAMENTO E PRECEDÊNCIA --- */
-    top: 0;                     /* Cola no topo absoluto */
-    left: 0;                    /* Cola na esquerda */
-    z-index: 10;                /* Garante que fique "na frente" (camada superior) */
-    
-    /* --- ESTILO --- */
+    /* ESTILO*/
     color: #7f8c8d;
     text-decoration: none;
     font-weight: 400;
     font-size: 0.9rem;
     border: none;
     background: transparent;
-    padding: 5px 0;             /* Área de clique ajustada */
+    padding: 5px 0;           
     transition: color 0.3s;
 }
 
@@ -88,9 +84,9 @@
     text-align: center;
 }
 
-/* =========================================
-   FILTRO DE TURMA
-   ========================================= */
+/* 
+   FILTRO TURMA
+*/
 .filter-container {
     margin-top: 1.5rem;
     text-align: center;
@@ -119,9 +115,9 @@
     border-color: #1e3c72;
 }
 
-/* =========================================
+/* 
    GRID DE ALUNOS
-   ========================================= */
+*/
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -177,9 +173,9 @@
 .status-baixo { border-left-color: #2ecc71; }
 .status-baixo .tag-risco { background-color: #2ecc71; }
 
-/* =========================================
+/* 
    MODAL
-   ========================================= */
+*/
 .modal {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(30, 60, 114, 0.8);
@@ -213,19 +209,18 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* =========================================
+/* 
    RESPONSIVIDADE
-   ========================================= */
+*/
 @media (max-width: 768px) {
     .dashboard-card {
         width: 95%;
         padding: 1.5rem 1rem;
     }
 
-    /* No celular, mantemos a estrutura relativa */
     .header-top {
         justify-content: center; 
-        flex-direction: column; /* Logo em cima, texto embaixo se apertar muito */
+        flex-direction: column; 
     }
 
     .dash-logo { 
@@ -238,7 +233,6 @@
         font-size: 1.1rem;
     }
 
-    /* Botão Sair continua fixo no topo esquerdo */
     .btn-logout {
         position: absolute;
         top: 0;
@@ -250,9 +244,9 @@
 
 
 
-/* =========================================
+/* 
    GRAFICO
-   ========================================= */
+*/
 
 .chart-container {
     width: 350px;

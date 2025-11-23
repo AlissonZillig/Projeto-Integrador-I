@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Risco - EWS</title>
+    <title>Dashboard de Risco</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dashboard.css">
@@ -25,28 +25,23 @@
                 <hr>
 
                 <div class="header-intro">
-        
-        <p>Olá, Coordenador. Abaixo estão os alunos ordenados por prioridade.</p>
-    </div>
+            
+                    <p>Olá, Coordenador. Abaixo estão os alunos ordenados por prioridade.</p>
+                </div>
 
-    <div class="filter-container">
-        <label for="filtroTurma">Filtrar por Sala:</label>
-        <select id="filtroTurma" onchange="carregarDashboard()">
-            <option value="todas">Todas as Turmas</option>
-            </select>
-    </div>
+                <div class="filter-container">
+                    <label for="filtroTurma">Filtrar por Sala:</label>
+                    <select id="filtroTurma" onchange="carregarDashboard()">
+                        <option value="todas">Todas as Turmas</option>
+                    </select>
+                </div>
+            
+                <div class="chart-container"> <!-- grafico -->
+                    <h3>Visão Geral de Risco</h3>
+                        <canvas id="graficoRisco"></canvas>
+                </div>
 
-        <!-- grafico --><!-- grafico --><!-- grafico -->
-<div class="chart-container">
-    <h3>Visão Geral de Risco</h3>
-    <canvas id="graficoRisco"></canvas>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- grafico --><!-- grafico --><!-- grafico -->
-
-</header>
-                
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>              
             </header>
             
 
